@@ -1,4 +1,5 @@
 // DEPENDENCIES
+const { Sequelize } = require('sequelize')
 const express = require('express')
 const app = express()
 
@@ -18,3 +19,12 @@ app.get('/', (req, res) => {
 app.listen(process.env.PORT, () => {
     console.log(`🎸 Rockin' on port: ${process.env.PORT}`)
 })
+
+// SEQUELIZE CONNECTION
+const sequelize = new Sequelize({
+    storage: process.env.PG_URI,
+    dialect: 'postgres',
+    username: 'postgres',
+    password: 'my_password'
+  })
+  
